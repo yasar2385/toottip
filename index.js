@@ -15,6 +15,41 @@ $('.tooltip').mousemove(function (e) {
   TOOL_TOP.style.display = 'inline-block';
 });
 
+function IsPopUpTime(e, tager) {
+  var TOOL_TOP = document.getElementById('xToolTip');
+  if (e.type == 'mouseleave') {
+    TOOL_TOP.style.display = 'none';
+  } else {
+    TOOL_TOP.style.left = e.pageX;
+    TOOL_TOP.style.top = e.pageX;
+    TOOL_TOP.style.display = 'inline-block';
+  }
+}
+document.body.addEventListener(
+  'mouseenter',
+  function (e) {
+    e = e || window.event;
+    var targetElem = e.target || e.srcElement;
+    if (targetElem.classList == 'tooltip-text') {
+      IsPopUpTime(e, targetElem);
+      console.log(e.type);
+    }
+  },
+  false
+);
+document.body.addEventListener(
+  'mouseleave',
+  function (e) {
+    e = e || window.event;
+    var targetElem = e.target || e.srcElement;
+    if (targetElem.classList == 'tooltip-text') {
+      IsPopUpTime(e, targetElem);
+      console.log(e.type);
+    }
+  },
+  false
+);
+
 (function () {
   var mousePos;
 
